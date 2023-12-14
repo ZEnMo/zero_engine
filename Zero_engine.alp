@@ -11954,6 +11954,15 @@ v_timeStepsElapsed ++;
 						<Parameter>
 							<Name><![CDATA[p_GISRegion_coords]]></Name>
 						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_buildingAdress]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_buildingName]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_detailedCompany]]></Name>
+						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
 					<Replication Class="CodeValue">
@@ -12026,6 +12035,9 @@ v_timeStepsElapsed ++;
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[p_AreaType]]></Name>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[p_GISRegionAreacoords]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -26711,6 +26723,7 @@ ea 2
 				<Variable Class="PlainVariable">
 					<Id>1661179464769</Id>
 					<Name><![CDATA[v_ownedGridConnection]]></Name>
+					<ExcludeFromBuild>true</ExcludeFromBuild>
 					<X>61</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -27591,7 +27604,7 @@ ea 2
 						<Type><![CDATA[GridConnection]]></Type>
 					</Parameter>
 					<Body><![CDATA[gridConnections.connectTo(ConnectingChildNode);
-v_ownedGridConnection = ConnectingChildNode;
+//v_ownedGridConnection = ConnectingChildNode;
 //traceln("f_connectToChild in connectionOwner agent, connection contract type: " + v_contractConnection.connectionContractType);
 /*if (v_contractConnection.connectionContractType.equals(OL_ConnectionContractType.NFATO)) {
 	ConnectingChildNode.v_enable_nfATO_b = true;
@@ -34468,21 +34481,6 @@ public void f_simpleCharging(){
 				<Parameter>
 					<Name><![CDATA[p_GISPoint]]></Name>
 				</Parameter>
-				<Parameter>
-					<Name><![CDATA[p_hasElectricHob]]></Name>
-				</Parameter>
-				<Parameter>
-					<Name><![CDATA[p_smartHeatingEnabled]]></Name>
-				</Parameter>
-				<Parameter>
-					<Name><![CDATA[p_pricelevelLowDifFromAvg_eurpkWh]]></Name>
-				</Parameter>
-				<Parameter>
-					<Name><![CDATA[p_pricelevelHighDifFromAvg_eurpkWh]]></Name>
-				</Parameter>
-				<Parameter>
-					<Name><![CDATA[p_heatingKickinTreshold_degC]]></Name>
-				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
 			<GenericParameter>
@@ -39438,7 +39436,7 @@ if (energyModel.b_addKpiVisuals) {
 				<Variable Class="Parameter">
 					<Id>1697009799975</Id>
 					<Name><![CDATA[gisRegion]]></Name>
-					<X>50</X><Y>48</Y>
+					<X>50</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -39459,7 +39457,7 @@ if (energyModel.b_addKpiVisuals) {
 				<Variable Class="Parameter">
 					<Id>1697009799980</Id>
 					<Name><![CDATA[p_longitude]]></Name>
-					<X>49</X><Y>87</Y>
+					<X>50</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -39480,7 +39478,7 @@ if (energyModel.b_addKpiVisuals) {
 				<Variable Class="Parameter">
 					<Id>1697009799984</Id>
 					<Name><![CDATA[p_latitude]]></Name>
-					<X>49</X><Y>107</Y>
+					<X>50</X><Y>80</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -39522,10 +39520,31 @@ if (energyModel.b_addKpiVisuals) {
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1702547667207</Id>
+					<Name><![CDATA[p_GISRegionAreacoords]]></Name>
+					<X>50</X><Y>150</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1702547667205</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1697009799967</Id>
 					<Name><![CDATA[c_buildingsInArea]]></Name>
-					<X>40</X><Y>280</Y>
+					<X>50</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -40565,6 +40584,71 @@ v_currentLoadLowPassed_kW += v_lowPassFactorLoad_fr * ( v_currentPowerElectricit
 						</ParameterEditor>
 					</Properties>                 
 				</Variable>
+				<Variable Class="Parameter">
+					<Id>1702460377737</Id>
+					<Name><![CDATA[p_buildingAdress]]></Name>
+					<X>580</X><Y>170</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1702460377735</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1702460377745</Id>
+					<Name><![CDATA[p_buildingName]]></Name>
+					<X>580</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1702460377743</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1702460377748</Id>
+					<Name><![CDATA[p_detailedCompany]]></Name>
+					<Description><![CDATA[Is het een bedrijf dat in detail gemodeleerd gaat worden? ja, nee, misschien]]></Description>
+					<X>580</X><Y>210</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[String]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1702460377746</Id>
+							<Label><![CDATA[p_detailedCompany]]></Label>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
 				<Variable Class="CollectionVariable">
 					<Id>1696866057758</Id>
 					<Name><![CDATA[c_gridConnectionsInBuilding]]></Name>
@@ -40701,6 +40785,29 @@ if (gisRegion == null ) {
 					<Z>0</Z>
 					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
 
+			<Presentation>
+				<Text>
+					<Id>1702460377734</Id>
+					<Name><![CDATA[text10]]></Name>
+					<X>570</X><Y>140</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[Toegevoegd_door_Ate]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>10</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+			</Presentation>
 
 				</Level>
 			</Presentation>
