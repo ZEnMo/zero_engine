@@ -4,7 +4,7 @@
 	         AnyLogic Project File 
 *************************************************	         
 -->
-<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.5.202310311100" AlpVersion="8.8.2">
+<AnyLogicWorkspace WorkspaceVersion="1.9" AnyLogicVersion="8.8.6.202312140457" AlpVersion="8.8.3">
 <Model>
 	<Id>1658477103134</Id>
 	<Name><![CDATA[Zero_engine]]></Name>
@@ -944,19 +944,22 @@
 		</OptionList>
 		<OptionList>
 			<Id>1675025163072</Id>
-			<Name><![CDATA[OL_SimulatedArea]]></Name>
-			<ExcludeFromBuild>true</ExcludeFromBuild>
+			<Name><![CDATA[OL_ConnectionOwnerType]]></Name>
 			<Option>
 				<Id>1675025163073</Id>
-				<Name><![CDATA[BUSINESSPARK]]></Name>
+				<Name><![CDATA[COMPANY]]></Name>
 			</Option>
 			<Option>
 				<Id>1675025163074</Id>
-				<Name><![CDATA[NEIGHBORHOOD]]></Name>
+				<Name><![CDATA[HOUSEHOLD]]></Name>
 			</Option>
 			<Option>
 				<Id>1675025163075</Id>
-				<Name><![CDATA[HVTRANSFORMER]]></Name>
+				<Name><![CDATA[SUBTENANT]]></Name>
+			</Option>
+			<Option>
+				<Id>1702915272457</Id>
+				<Name><![CDATA[OTHER]]></Name>
 			</Option>
 		</OptionList>
 	</OptionLists>
@@ -10223,10 +10226,13 @@ v_timeStepsElapsed ++;
 							<Name><![CDATA[p_heatSupplier]]></Name>
 						</Parameter>
 						<Parameter>
+							<Name><![CDATA[p_actorSubgroup]]></Name>
+						</Parameter>
+						<Parameter>
 							<Name><![CDATA[p_actorGroup]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[p_actorSubgroup]]></Name>
+							<Name><![CDATA[p_connectionOwnerType]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -10322,10 +10328,10 @@ v_timeStepsElapsed ++;
 							<Name><![CDATA[p_salderenActive]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[p_actorGroup]]></Name>
+							<Name><![CDATA[p_actorSubgroup]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[p_actorSubgroup]]></Name>
+							<Name><![CDATA[p_actorGroup]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -10427,13 +10433,13 @@ v_timeStepsElapsed ++;
 							<Name><![CDATA[p_yearlyOperationalCosts_eur]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[p_actorGroup]]></Name>
+							<Name><![CDATA[p_applyKostprijsPlus]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[p_actorSubgroup]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[p_applyKostprijsPlus]]></Name>
+							<Name><![CDATA[p_actorGroup]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -10520,10 +10526,10 @@ v_timeStepsElapsed ++;
 							<Name><![CDATA[p_hasCongestionPricing]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[p_actorGroup]]></Name>
+							<Name><![CDATA[p_actorSubgroup]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[p_actorSubgroup]]></Name>
+							<Name><![CDATA[p_actorGroup]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -10592,10 +10598,10 @@ v_timeStepsElapsed ++;
 							<Name><![CDATA[p_actorType]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[p_actorGroup]]></Name>
+							<Name><![CDATA[p_actorSubgroup]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[p_actorSubgroup]]></Name>
+							<Name><![CDATA[p_actorGroup]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>false</ReplicationFlag>
@@ -10669,10 +10675,10 @@ v_timeStepsElapsed ++;
 							<Name><![CDATA[p_actorType]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[p_actorGroup]]></Name>
+							<Name><![CDATA[p_actorSubgroup]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[p_actorSubgroup]]></Name>
+							<Name><![CDATA[p_actorGroup]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -21897,13 +21903,13 @@ f_checkModelConsistency();
 					</GenericParameterSubstitute>
 					<Parameters>
 						<Parameter>
-							<Name><![CDATA[p_actorType]]></Name>
+							<Name><![CDATA[p_actorID]]></Name>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[p_parentID]]></Name>
 						</Parameter>
 						<Parameter>
-							<Name><![CDATA[p_actorID]]></Name>
+							<Name><![CDATA[p_actorType]]></Name>
 						</Parameter>
 					</Parameters>
 					<ReplicationFlag>true</ReplicationFlag>
@@ -26432,10 +26438,13 @@ ea 2
 					<Name><![CDATA[p_actorType]]></Name>
 				</Parameter>
 				<Parameter>
+					<Name><![CDATA[p_actorSubgroup]]></Name>
+				</Parameter>
+				<Parameter>
 					<Name><![CDATA[p_actorGroup]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[p_actorSubgroup]]></Name>
+					<Name><![CDATA[p_connectionOwnerType]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -27565,6 +27574,28 @@ ea 2
 						<SdArray>false</SdArray>
 						<ParameterEditor>
 							<Id>1679492857356</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1702915036278</Id>
+					<Name><![CDATA[p_connectionOwnerType]]></Name>
+					<X>170</X><Y>90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[OL_ConnectionOwnerType]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<UnitOfValue Class="LengthUnits"><![CDATA[METER]]></UnitOfValue>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1702915036276</Id>
 							<EditorContolType>TEXT_BOX</EditorContolType>
 							<MinSliderValue><![CDATA[0]]></MinSliderValue>
 							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
@@ -29850,10 +29881,10 @@ Supplier]]></Text>
 					<Name><![CDATA[p_actorType]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[p_actorGroup]]></Name>
+					<Name><![CDATA[p_actorSubgroup]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[p_actorSubgroup]]></Name>
+					<Name><![CDATA[p_actorGroup]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -30020,10 +30051,10 @@ Supplier]]></Text>
 					<Name><![CDATA[p_actorType]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[p_actorGroup]]></Name>
+					<Name><![CDATA[p_actorSubgroup]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[p_actorSubgroup]]></Name>
+					<Name><![CDATA[p_actorGroup]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -32393,10 +32424,10 @@ for(Agent a :  subConnectionsElectricity.getConnections() ) {
 					<Name><![CDATA[p_actorType]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[p_actorGroup]]></Name>
+					<Name><![CDATA[p_actorSubgroup]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[p_actorSubgroup]]></Name>
+					<Name><![CDATA[p_actorGroup]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -33425,10 +33456,10 @@ v_currentBalanceNat_eur -= v_currentNettElectricityVolume_kWh * v_currentVariabl
 					<Name><![CDATA[p_actorType]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[p_actorGroup]]></Name>
+					<Name><![CDATA[p_actorSubgroup]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[p_actorSubgroup]]></Name>
+					<Name><![CDATA[p_actorGroup]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -34100,10 +34131,10 @@ else {
 					<Name><![CDATA[p_actorType]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[p_actorGroup]]></Name>
+					<Name><![CDATA[p_actorSubgroup]]></Name>
 				</Parameter>
 				<Parameter>
-					<Name><![CDATA[p_actorSubgroup]]></Name>
+					<Name><![CDATA[p_actorGroup]]></Name>
 				</Parameter>
 			</Parameters>
 			<Generic>false</Generic>
@@ -40066,7 +40097,7 @@ v_currentLoadLowPassed_kW += v_lowPassFactorLoad_fr * ( v_currentPowerElectricit
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
-						<Type><![CDATA[String]]></Type>
+						<Type><![CDATA[OL_ActorType]]></Type>
 						<UnitType><![CDATA[NONE]]></UnitType>
 						<SdArray>false</SdArray>
 						<ParameterEditor>
